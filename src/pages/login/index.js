@@ -86,6 +86,7 @@ function Login() {
                 clientId={clientId}
                 buttonText="Logout"
                 onLogoutSuccess={onSignOutSuccess}
+                isSignedIn={false}
               />
             )}
 

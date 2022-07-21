@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
 import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin,GoogleLogout } from "react-google-login";
-import { useState} from "react";
-
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { useState } from "react";
+import { gapi } from "gapi-script";
 
 function Login() {
   let navigate = useNavigate();
   const clientId =
-    "580112951944-f8195n6jqu4ej4du1i4608nblnchbgv9.apps.googleusercontent.com";
-    const [showLogin, setShowLogin] = useState(false);
+    "580112951944-572hof81l7e22eesovvqivhb6n7ab2bh.apps.googleusercontent.com";
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "profile email",
+      });
+    }
+    gapi.load("client:auth2", start);
+  });
+  const [showLogin, setShowLogin] = useState(true);
   const onLoginSuccess = (response) => {
     console.log(response);
     alert("Login Success");
+    console.log("showLogin", showLogin);
     setShowLogin(false);
   };
   const onLoginFailure = (response) => {
@@ -23,7 +33,8 @@ function Login() {
     console.log(response);
     alert("Logout Success");
     setShowLogin(true);
-  }
+    console.log("showLogin", showLogin);
+  };
   return (
     <div className="pageContianer">
       <div className="loginContainer">
@@ -61,20 +72,23 @@ function Login() {
              Don't have an account? <a href="/register">SignUp</a>
             </div> */}
             {/* <button className="googleBtn">SignUp with Google</button> */}
-            {
-              showLogin ? <GoogleLogin
-              clientId={clientId}
-              buttonText="SignUp with Google"
-              onSuccess={onLoginSuccess}
-              onFailure={onLoginFailure}
-              cookiePolicy={"single_host_origin"}
-            />:
-            <GoogleLogout
-              clientId={clientId}
-              buttonText="Logout"
-              onLogoutSuccess={onSignOutSuccess}/>
-            }
-            
+            {showLogin ? (
+              <GoogleLogin
+                clientId={clientId}
+                buttonText="SignUp with Google"
+                onSuccess={onLoginSuccess}
+                onFailure={onLoginFailure}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={true}
+              />
+            ) : (
+              <GoogleLogout
+                clientId={clientId}
+                buttonText="Logout"
+                onLogoutSuccess={onSignOutSuccess}
+              />
+            )}
+
             <button className="facebookBtn">SignUp with Facebook</button>
           </div>
         </div>

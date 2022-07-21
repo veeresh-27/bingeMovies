@@ -15,7 +15,13 @@ function Navbar() {
         <ul>
           <li>Options</li>
           <li>Profile</li>
-          <li>Logout</li>
+          <li>
+            {/* <GoogleLogout
+              clientId="580112951944-f8195n6jqu4ej4du1i4608nblnchbgv9.apps.googleusercontent.com"
+              buttonText="Logout"
+              onLogoutSuccess={() => navigate("/login")}
+            ></GoogleLogout> */}
+          </li>
         </ul>
       </div>
     </div>

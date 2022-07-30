@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import Card from "../../components/card";
 import { useState, useEffect } from "react";
+import Navbar from "../../components/navbar";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -29,7 +30,6 @@ function Home() {
   if (error) {
     return <div className="home">Error: {error.message}</div>;
   }
-  console.log(data.data[0]);
   return (
     <div className="home">
       <div className="cards">

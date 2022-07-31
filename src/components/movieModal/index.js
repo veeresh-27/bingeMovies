@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function MovieMode() {
-  return (
-    <div>MovieMode</div>
-  )
+  return <div>Movie Now</div>;
 }
 
-export default MovieMode
+export default MovieMode;

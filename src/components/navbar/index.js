@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate,Link } from "react-router-dom";
 import "./styles.css";
-import { GoogleLogout } from "react-google-login";
-import { UserContext } from "../../context/AuthContext";
 import { useGoogleAuth } from "../../context/GoogleAuth";
+import { Avatar } from "@mui/material";
 
 function Navbar() {
-  var { user, setUser } = useContext(UserContext);
   let navigate = useNavigate();
-  const { signOut, isSignedIn, googleUser } = useGoogleAuth();
+  const { signOut, isSignedIn } = useGoogleAuth();
   const googleSignOut = () => {
     alert("Logout Success");
     signOut()
@@ -20,16 +17,16 @@ function Navbar() {
     <>
       {isSignedIn && (
         <div className="navbar">
-          <div className="navbarLogo">LOGO</div>
+          <div className="navbarLogo" onClick={()=> window.scroll(0,0)}>LOGO</div>
           <div className="navbarItems">
-            <div className="searchBox">
-              <input type="text" placeholder="Search" />
-            </div>
+            
             <ul>
-              <li>Options</li>
-              <li>Settings</li>
+              <li><Link to="/home">Trending</Link></li> 
+              <li><Link to="/movies">Movies</Link></li>
+              <li> <Link to="/tvshows">Tv Shows</Link></li>
+              <li> <Link to="/search">Search</Link></li>
 
-              <li onClick={googleSignOut}>Logout</li>
+              <li onClick={googleSignOut}><Avatar/></li>
             </ul>
           </div>
         </div>

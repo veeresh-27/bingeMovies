@@ -3,40 +3,44 @@ import "./styles.css";
 import Card from "../../components/card";
 import { useState, useEffect } from "react";
 import Navbar from "../../components/navbar";
+import axios from "axios";
+import MovieCard from "../../components/movieCard";
+import CustomPagination from "../../components/customPagination";
 
 function Home() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const url = "https://dummy.restapiexample.com/api/v1/employees";
+  const [content, setContent] = useState([]);
+  const [page, setPage] = useState(1);
+  const fetchTrending = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_MOVIESDB_API_KEY}&page=${page}`
+    );
+    setContent(data.results);
+    console.log("Trending:", data);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setData(json);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [url]);
-  if (loading) {
-    return <div className="home">Loading...</div>;
-  }
-  if (error) {
-    return <div className="home">Error: {error.message}</div>;
-  }
+    fetchTrending();
+  }, [page]);
+
   return (
     <div className="home">
+      <h1>Trending</h1>
       <div className="cards">
-        {data.data.map((item, index) => (
-          <Card key={index} data={item} />
-        ))}
+        {
+          content && content.map((data, index) => (
+            <MovieCard 
+            key={data.id}
+            id={data.id}
+            title={data.title || data.name}
+            poster={data.poster_path}
+            rating={data.vote_average}
+            date={data.release_date || data.first_air_date}
+            mediaType={data.media_type}
+
+            />
+          ))
+        }
       </div>
+      <CustomPagination setPage={setPage}/>
     </div>
   );
 }

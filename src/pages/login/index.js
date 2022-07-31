@@ -1,45 +1,16 @@
-import React, { useEffect, useContext } from "react";
 import "./styles.css";
 import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-// import { GoogleLogin } from "react-google-login";
-// import { useState } from "react";
-// import { gapi } from "gapi-script";
-import { UserContext } from "../../context/AuthContext";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 
 function Login() {
   let navigate = useNavigate();
-  var { user, setUser } = useContext(UserContext);
-  // const clientId =
-  //   "580112951944-572hof81l7e22eesovvqivhb6n7ab2bh.apps.googleusercontent.com";
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId: clientId,
-  //       scope: "profile email",
-  //     });
-  //   }
-  //   gapi.load("client:auth2", start);
-  // });
-
-  // const onLoginSuccess = (response) => {
-  //   console.log(response);
-  //   alert("Login Success");
-  //   setUser(response.profileObj);
-  //   navigate("/home");
-  // };
-  // const onLoginFailure = (response) => {
-  //   alert(response);
-  // };
-  console.log("User", user);
-  const { signIn, isSignedIn } = useGoogleAuth();
+  const { signIn } = useGoogleAuth();
   const googleSignIn = async () => {
     const googleuser = await signIn();
-    if(googleuser) {
+    if (googleuser) {
       navigate("/home", { replace: true });
-    }
-    else{
+    } else {
       return navigate("/");
     }
     console.log("Google User", googleuser);
@@ -74,13 +45,11 @@ function Login() {
               Login
             </button>
           </form>
-
           <hr className="hrLine" />
           <div className="loginFooter">
             <button className="googlebtn" onClick={googleSignIn}>
               Google SignIn
             </button>
-
             <button className="facebookBtn">SignUp with Facebook</button>
           </div>
         </div>

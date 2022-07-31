@@ -24,3 +24,4 @@ const result = Math.round(rating * 10) / 10;
 }
 
 export default MovieCard;
+

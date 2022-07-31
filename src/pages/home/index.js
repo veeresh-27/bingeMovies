@@ -25,22 +25,20 @@ function Home() {
     <div className="home">
       <h1>Trending</h1>
       <div className="cards">
-        {
-          content && content.map((data, index) => (
-            <MovieCard 
-            key={data.id}
-            id={data.id}
-            title={data.title || data.name}
-            poster={data.poster_path}
-            rating={data.vote_average}
-            date={data.release_date || data.first_air_date}
-            mediaType={data.media_type}
-
+        {content &&
+          content.map((data, index) => (
+            <MovieCard
+              key={data.id}
+              id={data.id}
+              title={data.title || data.name}
+              poster={data.poster_path}
+              rating={data.vote_average}
+              date={data.release_date || data.first_air_date}
+              mediaType={data.media_type}
             />
-          ))
-        }
+          ))}
       </div>
-      <CustomPagination setPage={setPage}/>
+      <CustomPagination setPage={setPage} />
     </div>
   );
 }

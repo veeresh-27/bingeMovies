@@ -26,15 +26,15 @@ const Genre = ({
     };
   }, []);
 
-  const handleAdd = (genre)=>{
-    setSelectedGenre([...selectedGenre, genre]);
-    setGenre(genre.filter((g)=>g.id !== genre.id));
+  const handleAdd = (gnr)=>{
+    setSelectedGenre([...selectedGenre, gnr]);
+    setGenre(genre.filter((g)=>g.id !== gnr.id));
     setPage(1);
   }
 
-  const handleRemove = (genre)=>{
-    setSelectedGenre(selectedGenre.filter((g)=>g.id !== genre.id));
-    setGenre([...genre, genre]);
+  const handleRemove = (gnr)=>{
+    setSelectedGenre(selectedGenre.filter((g)=>g.id !== gnr.id));
+    setGenre([...genre, gnr]);
     setPage(1);
   }
 

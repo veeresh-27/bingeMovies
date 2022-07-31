@@ -23,7 +23,7 @@ function Navbar() {
             <ul>
               <li><Link to="/home">Trending</Link></li> 
               <li><Link to="/movies">Movies</Link></li>
-              <li> <Link to="/tvshows">Tv Shows</Link></li>
+              <li> <Link to="/tvshows">Series</Link></li>
               <li> <Link to="/search">Search</Link></li>
 
               <li onClick={googleSignOut}><Avatar/></li>

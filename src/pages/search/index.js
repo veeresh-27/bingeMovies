@@ -1,17 +1,108 @@
-import { TextField } from "@material-ui/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "../../App.css";
+import {
+  Button,
+  createMuiTheme,
+  Tab,
+  Tabs,
+  TextField,
+  ThemeProvider,
+} from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import MovieCard from "../../components/movieCard";
+import CustomPagination from "../../components/customPagination";
 
 const Search = () => {
-    const [type, setType] = useState(0);
-    return (
-        <div>
-            <TextField
-                style={{ flex: 1 }}
-                className="searchBox"
-                label="Search"
-                variant="outlined"
-              //  onChange={(e) => setType(e.target.value)}
-            />
-        </div>
+  const [type, setType] = useState(0);
+  const [page, setPage] = useState(1);
+  const [searchText, setSearchText] = useState("");
+  const [content, setContent] = useState([]);
+  const [numOfPages, setNumOfPages] = useState(0);
+
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: "dark",
+      primary: {
+        main: "#fff",
+      },
+    },
+  });
+
+  const fetchSearch = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${
+        process.env.REACT_APP_MOVIESDB_API_KEY
+      }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
     );
-}
+    console.log("Search:", data);
+    setContent(data.results);
+    setNumOfPages(data.total_pages);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetchSearch();
+  }, [page, type]);
+
+  return (
+    <div className="home">
+      <ThemeProvider theme={darkTheme}>
+        <div className="searchContainer">
+          <div className="searchBox">
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </div>
+          <Button
+            onClick={fetchSearch}
+            className="searchButton"
+            variant="contained"
+            style={{ marginLeft: 10 }}
+
+          >
+            <SearchIcon fontSize="large" />
+          </Button>
+        </div>
+
+        <Tabs
+          value={type}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={(e, val) => {
+            setType(val);
+            setPage(1);
+          }}
+          style={{ paddingTop: "10px", paddingBottom: "10" }}
+        >
+          <Tab label="Search Movies" style={{ width: "50%" }} />
+          <Tab label="Search TV Shows" style={{ width: "50%" }} />
+        </Tabs>
+        
+      </ThemeProvider>
+      
+      <div className="cards">
+        {content &&
+          content.map((data, index) => (
+            <MovieCard
+              key={data.id}
+              id={data.id}
+              title={data.title || data.name}
+              poster={data.poster_path}
+              rating={data.vote_average}
+              date={data.release_date || data.first_air_date}
+              mediaType={type ? "tv" : "movie"}
+            />
+          ))}
+      </div>
+      
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
+    </div>
+  );
+};
+
+export default Search;

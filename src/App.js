@@ -6,6 +6,7 @@ import Navbar from "./components/navbar";
 import Movies from "./pages/movies";
 import TvShows from "./pages/tvShows";
 import Search from "./pages/search";
+import MovieInfo from "./pages/movieInfo";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvshows" element={<TvShows />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/movieinfo/:entity/:id" element={<MovieInfo />} />
         </Routes>
       </Router>
     </div>

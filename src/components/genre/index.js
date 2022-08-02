@@ -17,7 +17,6 @@ const Genre = ({
     );
     setGenre(data.genres);
   };
-  console.log("genre:", genre);
   useEffect(() => {
     fetchGenre();
 

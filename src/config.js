@@ -1,10 +1,11 @@
 export const img_300 = "https://image.tmdb.org/t/p/w300";
-export const img_500 = "https://image.tmdb.org/t/p/w500";
+export const img_500 = "https://image.tmdb.org/t/p/original";
 
-export const unavailable = "https://wwww.movienewz.com/img/films/poster-holder.jpg";
+export const unavailable =
+  "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
 
 export const unavailableLandscape =
-  "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
+  "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
 
 // For Carousel
 export const noPicture =

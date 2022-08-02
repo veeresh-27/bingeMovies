@@ -1,14 +1,14 @@
 import React from "react";
-import Card from "../../components/card";
 import { useState, useEffect } from "react";
-import Navbar from "../../components/navbar";
 import axios from "axios";
 import MovieCard from "../../components/movieCard";
 import CustomPagination from "../../components/customPagination";
 import Genre from "../../components/genre";
 import useGenre from "../../hooks/useGenre";
+import { useNavigate } from "react-router-dom";
 
 function TvShows() {
+  const navigate = useNavigate();
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState(0);
   const [page, setPage] = useState(1);
@@ -22,11 +22,15 @@ function TvShows() {
     );
     setContent(data.results);
     setNumOfPages(data.total_pages);
-    console.log("Series:", data);
   };
   useEffect(() => {
     fetchTrending();
+    // eslint-disable-next-line
   }, [page, genreForMovies]);
+
+  const handlePageChange = (page, tv) => {
+    navigate(`/movieinfo/${tv}/${page}`);
+  };
 
   return (
     <div className="home">
@@ -42,7 +46,7 @@ function TvShows() {
       />
       <div className="cards">
         {content &&
-          content.map((data, index) => (
+          content.map((data) => (
             <MovieCard
               key={data.id}
               id={data.id}
@@ -50,7 +54,8 @@ function TvShows() {
               poster={data.poster_path}
               rating={data.vote_average}
               date={data.release_date || data.first_air_date}
-              mediaType='tv'
+              mediaType="tv"
+              onClick={() => handlePageChange(data.id, "tv")}
             />
           ))}
       </div>

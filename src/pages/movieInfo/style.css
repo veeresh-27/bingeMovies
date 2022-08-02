@@ -1,0 +1,21 @@
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.backdrop {
+  display: flex;
+  width: 950px;
+}
+.backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.movieHeading {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

@@ -3,24 +3,25 @@ import axios from "axios";
 import "../../App.css";
 import {
   Button,
-  createMuiTheme,
+  createTheme,
   Tab,
   Tabs,
-  TextField,
   ThemeProvider,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import MovieCard from "../../components/movieCard";
 import CustomPagination from "../../components/customPagination";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
+  
   const [type, setType] = useState(0);
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState(0);
 
-  const darkTheme = createMuiTheme({
+  const darkTheme = createTheme({
     palette: {
       type: "dark",
       primary: {
@@ -35,14 +36,18 @@ const Search = () => {
         process.env.REACT_APP_MOVIESDB_API_KEY
       }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
     );
-    console.log("Search:", data);
     setContent(data.results);
     setNumOfPages(data.total_pages);
+  };
+  const navigate = useNavigate();
+  const handlePageChange = (page, tv) => {
+    navigate(`/movieinfo/${tv}/${page}`);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchSearch();
+    // eslint-disable-next-line
   }, [page, type]);
 
   return (
@@ -61,7 +66,6 @@ const Search = () => {
             className="searchButton"
             variant="contained"
             style={{ marginLeft: 10 }}
-
           >
             <SearchIcon fontSize="large" />
           </Button>
@@ -80,9 +84,8 @@ const Search = () => {
           <Tab label="Search Movies" style={{ width: "50%" }} />
           <Tab label="Search TV Shows" style={{ width: "50%" }} />
         </Tabs>
-        
       </ThemeProvider>
-      
+
       <div className="cards">
         {content &&
           content.map((data, index) => (
@@ -94,10 +97,11 @@ const Search = () => {
               rating={data.vote_average}
               date={data.release_date || data.first_air_date}
               mediaType={type ? "tv" : "movie"}
+              onClick={() => handlePageChange(data.id, type)}
             />
           ))}
       </div>
-      
+
       {numOfPages > 1 && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
       )}

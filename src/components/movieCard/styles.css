@@ -1,12 +1,11 @@
 .movieCard {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 240px;
   background-color: #303136;
-  ;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
-  border-radius: 4px; 
+  border-radius: 4px;
   cursor: pointer;
   padding: 4px;
   gap: 8px;
@@ -14,11 +13,10 @@
   transition: all 0.2s ease-in-out;
 }
 
-.movieCard:hover{
-    background-color: #1e232c;
-    color: #f6f6f6;
+.movieCard:hover {
+  background-color: #1e232c;
+  color: #f6f6f6;
 }
-
 
 .movieCardImage img {
   width: 100%;

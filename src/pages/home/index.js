@@ -1,8 +1,6 @@
 import React from "react";
 import "./styles.css";
-import Card from "../../components/card";
 import { useState, useEffect } from "react";
-import Navbar from "../../components/navbar";
 import axios from "axios";
 import MovieCard from "../../components/movieCard";
 import CustomPagination from "../../components/customPagination";
@@ -12,6 +10,7 @@ function Home() {
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
+
   const handlePageChange = (page, tv) => {
     navigate(`/movieinfo/${tv}/${page}`);
   };
@@ -20,7 +19,6 @@ function Home() {
       `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_MOVIESDB_API_KEY}&page=${page}`
     );
     setContent(data.results);
-    console.log("Trending:", data);
   };
   useEffect(() => {
     fetchTrending();

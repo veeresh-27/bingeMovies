@@ -14,7 +14,6 @@ import CustomPagination from "../../components/customPagination";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
-  
   const [type, setType] = useState(0);
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState("");
@@ -37,11 +36,12 @@ const Search = () => {
       }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
     );
     setContent(data.results);
+    console.log("search", content);
     setNumOfPages(data.total_pages);
   };
   const navigate = useNavigate();
-  const handlePageChange = (page, tv) => {
-    navigate(`/movieinfo/${tv}/${page}`);
+  const handlePageChange = (id, type) => {
+    navigate(`/movieinfo/${type}/${id}`);
   };
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const Search = () => {
               rating={data.vote_average}
               date={data.release_date || data.first_air_date}
               mediaType={type ? "tv" : "movie"}
-              onClick={() => handlePageChange(data.id, type)}
+              onClick={() => handlePageChange(data.id, type?"tv":"movie")}
             />
           ))}
       </div>

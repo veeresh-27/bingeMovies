@@ -5,6 +5,8 @@ import "./styles.css";
 
 function MovieCard({ id, poster, title, rating, date, mediaType, onClick }) {
   const result = Math.round(rating * 10) / 10;
+  //mediaType = 'Movies' || 'TV' || 'Video'
+  //result = 
   return (
     <div className="movieCard" onClick={onClick}>
       <Badge

@@ -9,7 +9,6 @@ import StarIcon from "@material-ui/icons/Star";
 import PeopleIcon from "@material-ui/icons/People";
 
 function MovieInfo() {
-  
   const { id, entity } = useParams();
   const [content, setContent] = useState([]);
   const [video, setVideo] = useState([]);
@@ -41,8 +40,11 @@ function MovieInfo() {
       ? slice(content.first_air_date, 0, 4) //2022-01-01
       : slice(content.release_date, 0, 4);
 
-      const postFix = content.vote_count > 1000 ? `${Math.round(content.vote_count *10 / 1000 )/10 }K` : `${content.vote_count}`;
-      
+  const postFix =
+    content.vote_count > 1000
+      ? `${Math.round((content.vote_count * 10) / 1000) / 10}K`
+      : `${content.vote_count}`;
+
   return (
     <div className="home">
       {content.title || content.name ? (
@@ -67,13 +69,27 @@ function MovieInfo() {
             </div>
             <div className="ratingTab">
               <div className="ratingContainer">
-                <div className="ratingHead">TMDb RATING</div>
+                <div className="ratingHead">TMDb&nbsp;RATING</div>
                 <div className="ratingCont">
                   <div className="ratingIcon">
-                    <StarIcon style={{width:'37px',height:"37px",color:'orange',margin:0,padding:0}} sx={{fontSize:100}} />
+                    <StarIcon
+                      style={{
+                        width: "37px",
+                        height: "37px",
+                        color: "orange",
+                        margin: 0,
+                        padding: 0,
+                      }}
+                      sx={{ fontSize: 100 }}
+                    />
                   </div>
                   <div className="rating">
-                    <div className="ratingAvg"><div className="boldRating">{    Math.round(content.vote_average * 10) / 10}</div>/10</div>
+                    <div className="ratingAvg">
+                      <div className="boldRating">
+                        {Math.round(content.vote_average * 10) / 10}
+                      </div>
+                      /10
+                    </div>
                     <div className="ratingCount">{postFix}</div>
                   </div>
                 </div>
@@ -82,10 +98,21 @@ function MovieInfo() {
                 <div className="ratingHead">POPULARITY</div>
                 <div className="ratingCont">
                   <div className="ratingIcon">
-                    <PeopleIcon style={{width:'37px',height:"37px",color:'orange',margin:0,padding:0}} sx={{fontSize:100}} />
+                    <PeopleIcon
+                      style={{
+                        width: "37px",
+                        height: "37px",
+                        color: "orange",
+                        margin: 0,
+                        padding: 0,
+                      }}
+                      sx={{ fontSize: 100 }}
+                    />
                   </div>
-                  <div className="rating" style={{justifyContent:"center"}}>
-                    <div className="ratingAvg">{Math.round(content.popularity * 10) / 10}</div>
+                  <div className="rating" style={{ justifyContent: "center" }}>
+                    <div className="ratingAvg">
+                      {Math.round(content.popularity * 10) / 10}
+                    </div>
                   </div>
                 </div>
               </div>

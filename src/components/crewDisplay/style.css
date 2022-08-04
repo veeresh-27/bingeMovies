@@ -1,0 +1,43 @@
+.crewWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 10vh;
+  overflow-y: scroll;
+}
+.crewWrapper::-webkit-scrollbar {
+  width: 2px;
+  background-color: #c6c6c6;
+}
+
+.crewContainer {
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  cursor: pointer;
+}
+.crewHead {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+  color: #dedede;
+}
+.crewBody {
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: underline;
+  margin: 0;
+  color: #c6c6c6;
+}
+
+.crewBody:hover {
+  color: #e6e6e6;
+}
+
+.noCrew{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  font-size: 18px;
+  color: #c6c6c6;
+}

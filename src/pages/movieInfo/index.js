@@ -7,6 +7,9 @@ import { img_500, unavailable } from "../../config";
 import StaticGenre from "../../components/staticGenre";
 import StarIcon from "@material-ui/icons/Star";
 import PeopleIcon from "@material-ui/icons/People";
+import Carousel from "../../components/carousel";
+import CrewDisplay from "../../components/crewDisplay";
+import Details from "../../components/details";
 
 function MovieInfo() {
   const { id, entity } = useParams();
@@ -20,14 +23,13 @@ function MovieInfo() {
     );
     setContent(data);
     setGenre(data.genres);
-    console.log("MovieInfo:", data);
+    console.log("data", data);
   };
   const fetchVideo = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/${entity}/${id}/videos?api_key=${process.env.REACT_APP_MOVIESDB_API_KEY}&language=en-US`
     );
-    setVideo(data.results[0]?.key);
-    console.log("VideoInfo:", data);
+    setVideo(data.results);
   };
   useEffect(() => {
     fetchData();
@@ -129,9 +131,48 @@ function MovieInfo() {
             />
           </div>
           <StaticGenre genre={genre} />
-          <div className="summary">
-            {" "}
+          <div className="storyLine" style={{ marginTop: 20 }}>
+            <div className="storyLineHead">
+              <h3>Storyline</h3>
+            </div>{" "}
             <p>{content.overview}</p>
+          </div>
+          <div className="cast" style={{ marginTop: 24 }}>
+            <div className="storyLineHead">
+              <div className="videoHeading">
+                <h3>Videos</h3>
+                <div classsName="videoCount">{video.length}</div>
+              </div>
+
+              <Carousel
+                mediaType={entity}
+                id={id}
+                type="video"
+                video={video}
+                image={
+                  content.poster_path && `${img_500}/${content.poster_path}`
+                }
+              />
+            </div>
+          </div>
+          <div className="cast" >
+            <div className="storyLineHead">
+              <h3>Cast</h3>
+              <Carousel mediaType={entity} id={id} type="cast" />
+            </div>
+          </div>
+
+          <div className="cast" style={{ marginTop: 24 }}>
+            <div className="storyLineHead">
+              <h3>Crew</h3>
+              <CrewDisplay mediaType={entity} id={id} />
+            </div>
+          </div>
+          <div className="storyLine" style={{ marginTop: 24 }}>
+            <div className="storyLineHead">
+              <h3>Details</h3>
+            </div>{" "}
+           <Details content={content} type={entity} />
           </div>
         </div>
       ) : (

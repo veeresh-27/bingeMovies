@@ -1,0 +1,38 @@
+.detailsContainer {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+}
+.detailsText {
+  display: flex;
+  padding: 12px 0;
+  gap: 8px;
+  
+}
+
+.detailsLabel{
+    font-weight: bold;
+    color: #f6f6f6;
+    flex-wrap: nowrap;
+}
+.valueContainer{
+display: flex;
+flex-wrap: wrap;
+}
+
+.detailsValueArr{
+    color: #c6c6c6;
+    border-left: 2px solid #c6c6c6;
+    padding:0 12px;
+}
+
+.detailsValue{
+    display: flex;
+    padding: 0 12px;
+    color: #c6c6c6;
+}
+
+.detailsHr {
+  display: flex;
+  width: 90%;
+}

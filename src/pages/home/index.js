@@ -22,6 +22,7 @@ function Home() {
   };
   useEffect(() => {
     fetchTrending();
+     // eslint-disable-next-line
   }, [page]);
 
   return (

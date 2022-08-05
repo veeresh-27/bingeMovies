@@ -4,7 +4,6 @@ import "./style.css";
 
 
 function Details({ content, type }) {
-    const [language, setLanguage] = React.useState("en");
   const series = [
     {
       id: 0,

@@ -13,6 +13,7 @@ const CrewDisplay = ({ mediaType, id }) => {
   };
   React.useEffect(() => {
     fetchCast();
+     // eslint-disable-next-line
   }, [id]);
   return (
     <div className="crewWrapper">

@@ -52,6 +52,9 @@
   color: #c6c6c6;
   margin: 0;
 }
+.mobileRatingTab {
+  display: none;
+}
 .ratingHead {
   font-size: 14px;
   font-weight: 600;
@@ -113,7 +116,9 @@
   border-left: 4px solid orange;
   padding-left: 12px;
 }
-
+.storyLineContent{
+  color: #c6c6c6;
+}
 
 .videoHeading {
   display: flex;
@@ -123,4 +128,50 @@
 
 .videoCount {
   font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .home {
+    padding: 20px 28px;
+  }
+  .home > h1 {
+    font-size: 24px;
+  }
+  .ratingTab {
+    display: none;
+  }
+
+  .mobileRatingTab {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: #c6c6c6;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home {
+    padding: 20px 12px;
+  }
+  .home > h1 {
+    font-size: 20px;
+  }
+  .cards {
+    gap: 12px;
+  }
+  .movieName{
+    font-size: 2rem;
+  }
+  .movieTagline{
+    font-size: 0.9rem;
+  }
+  .storyLineHead{
+    font-size: 1.2rem;
+  }
+  .storyLineContent{
+    font-size: 0.9rem;
+  }
 }

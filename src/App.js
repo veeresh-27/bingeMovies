@@ -7,6 +7,8 @@ import Movies from "./pages/movies";
 import TvShows from "./pages/tvShows";
 import Search from "./pages/search";
 import MovieInfo from "./pages/movieInfo";
+import Footer from "./components/footer";
+import MobileNavbar from "./components/mobileNav";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/movieinfo/:entity/:id" element={<MovieInfo />} />
         </Routes>
+        <MobileNavbar/>
       </Router>
     </div>
   );

@@ -23,23 +23,24 @@ const Genre = ({
     return () => {
       setGenre([]);
     };
+    // eslint-disable-next-line
   }, []);
 
-  const handleAdd = (gnr)=>{
+  const handleAdd = (gnr) => {
     setSelectedGenre([...selectedGenre, gnr]);
-    setGenre(genre.filter((g)=>g.id !== gnr.id));
+    setGenre(genre.filter((g) => g.id !== gnr.id));
     setPage(1);
-  }
+  };
 
-  const handleRemove = (gnr)=>{
-    setSelectedGenre(selectedGenre.filter((g)=>g.id !== gnr.id));
+  const handleRemove = (gnr) => {
+    setSelectedGenre(selectedGenre.filter((g) => g.id !== gnr.id));
     setGenre([...genre, gnr]);
     setPage(1);
-  }
+  };
 
   return (
     <div style={{ padding: "8px 0" }}>
-        {selectedGenre &&
+      {selectedGenre &&
         selectedGenre.map((genre) => (
           <Chip
             label={genre.name}
@@ -59,7 +60,7 @@ const Genre = ({
             size="small"
             clickable
             key={genre.id}
-            onClick={()=>handleAdd(genre)}
+            onClick={() => handleAdd(genre)}
           />
         ))}
     </div>

@@ -6,7 +6,7 @@ import { Avatar } from "@mui/material";
 
 function Navbar() {
   let navigate = useNavigate();
-  const { signOut, isSignedIn } = useGoogleAuth();
+  const { signOut} = useGoogleAuth();
   const googleSignOut = () => {
     alert("Logout Success");
     signOut();

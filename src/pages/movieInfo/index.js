@@ -131,11 +131,59 @@ function MovieInfo() {
             />
           </div>
           <StaticGenre genre={genre} />
+          <div className="mobileRatingTab">
+              <div className="ratingContainer">
+                <div className="ratingCont">
+                  <div className="ratingIcon">
+                    <StarIcon
+                      style={{
+                        width: "37px",
+                        height: "37px",
+                        color: "orange",
+                        margin: 0,
+                        padding: 0,
+                      }}
+                      sx={{ fontSize: 100 }}
+                    />
+                  </div>
+                  <div className="rating">
+                    <div className="ratingAvg">
+                      <div className="boldRating">
+                        {Math.round(content.vote_average * 10) / 10}
+                      </div>
+                      /10
+                    </div>
+                    <div className="ratingCount">{postFix}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="ratingContainer">
+                <div className="ratingCont">
+                  <div className="ratingIcon">
+                    <PeopleIcon
+                      style={{
+                        width: "37px",
+                        height: "37px",
+                        color: "orange",
+                        margin: 0,
+                        padding: 0,
+                      }}
+                      sx={{ fontSize: 100 }}
+                    />
+                  </div>
+                  <div className="rating" style={{ justifyContent: "center" }}>
+                    <div className="ratingAvg">
+                      {Math.round(content.popularity * 10) / 10}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           <div className="storyLine" style={{ marginTop: 20 }}>
             <div className="storyLineHead">
               <h3>Storyline</h3>
             </div>{" "}
-            <p>{content.overview}</p>
+            <p className="storyLineContent">{content.overview}</p>
           </div>
           <div className="cast" style={{ marginTop: 24 }}>
             <div className="storyLineHead">

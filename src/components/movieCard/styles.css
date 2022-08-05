@@ -43,3 +43,59 @@
   align-items: center;
   font-size: 14px;
 }
+
+@media screen and (max-width: 860px) {
+  .movieCard {
+    width: 200px;
+    
+  }
+  .movieCardContent .title {
+    text-align: center;
+    align-self: center;
+    font-size: 15px;
+  }
+  
+  .movieCardSubContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .movieCard {
+    width: 180px;
+  }
+  .movieCardContent .title {
+    text-align: center;
+    align-self: center;
+    font-size: 13px;
+  }
+  
+  .movieCardSubContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+  }
+}
+
+
+@media screen and (max-width: 396px) {
+  .movieCard {
+    width: 240px;
+  }
+  .movieCardContent .title {
+    text-align: center;
+    align-self: center;
+    font-size: 13px;
+  }
+  
+  .movieCardSubContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+  }
+}

@@ -1,11 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { img_300, noPicture } from "../../config";
 import "./style.css";
 import { createTheme, ThemeProvider } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -19,8 +18,7 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
     },
   });
 
-  console.log("video", video);
-  const [content, setContent] = React.useState([]);
+  const [content, setContent] = useState([]);
   const resposive = {
     0: { items: 3 },
     512: { items: 4 },
@@ -31,6 +29,7 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
       <a
         href={`https://www.youtube.com/watch?v=${content.key}`}
         target="_blank"
+        rel="noreferrer"
       >
         <img
           src={image ? `${img_300}/${image}` : noPicture}
@@ -69,8 +68,9 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
     );
     setContent(data.cast);
   };
-  React.useEffect(() => {
+  useEffect(() => {
     fetchCast();
+    // eslint-disable-next-line
   }, [id]);
   return (
     <ThemeProvider theme={darkTheme}>
@@ -87,6 +87,8 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
       )}
       {type === "video" && (
         <AliceCarousel
+        infinite
+          autoPlay
           responsive={resposive}
           disableDotsControls
           mouseTracking

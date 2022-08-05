@@ -7,32 +7,43 @@
   display: flex;
   padding: 12px 0;
   gap: 8px;
-  
 }
 
-.detailsLabel{
-    font-weight: bold;
-    color: #f6f6f6;
-    flex-wrap: nowrap;
+.detailsLabel {
+  font-weight: bold;
+  color: #f6f6f6;
+  flex-wrap: nowrap;
 }
-.valueContainer{
-display: flex;
-flex-wrap: wrap;
-}
-
-.detailsValueArr{
-    color: #c6c6c6;
-    border-left: 2px solid #c6c6c6;
-    padding:0 12px;
+.valueContainer {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.detailsValue{
-    display: flex;
-    padding: 0 12px;
-    color: #c6c6c6;
+.detailsValueArr {
+  color: #c6c6c6;
+  border-left: 2px solid #c6c6c6;
+  padding: 0 12px;
+}
+
+.detailsValue {
+  display: flex;
+  padding: 0 12px;
+  color: #c6c6c6;
 }
 
 .detailsHr {
   display: flex;
   width: 90%;
+}
+
+@media screen and (max-width: 600px) {
+  .detailsText {
+    padding: 8px 0;
+  }
+  .detailsLabel {
+    font-size: 1rem;
+  }
+  .detailsValueArr .detailsValue {
+    padding: 0 8px;
+  }
 }

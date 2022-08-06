@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 import { Avatar } from "@mui/material";
@@ -22,30 +22,31 @@ function MobileNavbar() {
       <div className="mobileNavbarItems">
         <ul>
           <li>
-            <NavLink
+            <Link
               to="/home"
-              className={({ isActive }) => 
-                      (isActive ? "lactive-class" : "not-active-class")}
+              className={({ isActive }) =>
+                isActive ? "lactive-class" : "not-active-class"
+              }
             >
               <WhatshotIcon />
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink to="/movies">
+            <Link to="/movies">
               <MovieIcon />
-            </NavLink>
+            </Link>
           </li>
           <li>
             {" "}
-            <NavLink to="/tvshows">
+            <Link to="/tvshows">
               <TvIcon />{" "}
-            </NavLink>
+            </Link>
           </li>
           <li>
             {" "}
-            <NavLink to="/search">
+            <Link to="/search">
               <SearchIcon />{" "}
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>

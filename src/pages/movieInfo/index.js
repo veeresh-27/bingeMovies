@@ -137,13 +137,10 @@ function MovieInfo() {
                   <div className="ratingIcon">
                     <StarIcon
                       style={{
-                        width: "37px",
-                        height: "37px",
+                        width: "30px",
+                        height: "30px",
                         color: "orange",
-                        margin: 0,
-                        padding: 0,
                       }}
-                      sx={{ fontSize: 100 }}
                     />
                   </div>
                   <div className="rating">
@@ -162,8 +159,8 @@ function MovieInfo() {
                   <div className="ratingIcon">
                     <PeopleIcon
                       style={{
-                        width: "37px",
-                        height: "37px",
+                        width: "30px",
+                        height: "30px",
                         color: "orange",
                         margin: 0,
                         padding: 0,

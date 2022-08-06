@@ -19,9 +19,9 @@ function StaticGenre({ genre }) {
                   border: "1px solid #fff",
                   padding: "2px",
                   marginRight: "6px",
-                  marginTop: "-8px",
+                  marginTop: "4px",
                 }}
-                size="medium"
+                size="small"
                 variant="outlined"
                 clickable
                 key={genre.id}

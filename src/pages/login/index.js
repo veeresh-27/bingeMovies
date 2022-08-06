@@ -1,10 +1,12 @@
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useGoogleAuth } from "../../context/GoogleAuth";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useEffect } from "react";
 
 function Login() {
   let navigate = useNavigate();
-  const { signIn } = useGoogleAuth();
+  const { signIn, isSignedIn, isInitialized } = useGoogleAuth();
   const googleSignIn = async () => {
     const googleuser = await signIn();
     if (googleuser) {
@@ -14,11 +16,29 @@ function Login() {
     }
     console.log("Google User", googleuser);
   };
+  if (isSignedIn) {
+    return navigate("/home", { replace: true });
+  }
+
+  if (!isInitialized) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <ClipLoader color="orange" loading={!isInitialized} size={150} />
+      </div>
+    );
+  }
+
   return (
     <div className="pageContianer">
       <div className="loginContainer">
-        <div className="loginHeader">
-        </div>
+        <div className="loginHeader"></div>
         <div className="loginForm">
           <form>
             <div className="formGroup">

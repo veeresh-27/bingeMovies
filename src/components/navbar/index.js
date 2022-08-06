@@ -1,17 +1,32 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./styles.css";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 import { Avatar } from "@mui/material";
 
 function Navbar() {
   let navigate = useNavigate();
-  const { signOut } = useGoogleAuth();
+  const { signOut, isSignedIn } = useGoogleAuth();
   const googleSignOut = () => {
     alert("Logout Success");
     signOut();
-    navigate("/");
+    isSignedIn && navigate("/");
   };
+  useEffect(() => {
+    if (!isSignedIn) {
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const navLinkStyle = ({ isActive }) => {
+    // isActive ? {color:'orange'} : {color:'white'}
+    return {
+      color: isActive ? "orange" : "white",
+      transition: "all 0.3s ease-in-out",
+    };
+  };
+
   return (
     <div className="navbar">
       <div className="navbarLogo" onClick={() => window.scroll(0, 0)}>
@@ -20,18 +35,26 @@ function Navbar() {
       <div className="navbarItems">
         <ul>
           <li className="topItems">
-            <Link to="/home">Trending</Link>
+            <NavLink to="/home" style={navLinkStyle}>
+              Trending
+            </NavLink>
           </li>
           <li className="topItems">
-            <Link to="/movies">Movies</Link>
+            <NavLink to="/movies" style={navLinkStyle}>
+              Movies
+            </NavLink>
           </li>
           <li className="topItems">
             {" "}
-            <Link to="/tvshows">Series</Link>
+            <NavLink to="/tvshows" style={navLinkStyle}>
+              Series
+            </NavLink>
           </li>
           <li className="topItems">
             {" "}
-            <Link to="/search">Search</Link>
+            <NavLink to="/search" style={navLinkStyle}>
+              Search
+            </NavLink>
           </li>
 
           <li onClick={googleSignOut}>

@@ -1,20 +1,18 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.css";
-import { useGoogleAuth } from "../../context/GoogleAuth";
-import { Avatar } from "@mui/material";
 import TvIcon from "@material-ui/icons/Tv";
 import MovieIcon from "@material-ui/icons/Movie";
 import SearchIcon from "@material-ui/icons/Search";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 
 function MobileNavbar() {
-  let navigate = useNavigate();
-  const { signOut } = useGoogleAuth();
-  const googleSignOut = () => {
-    alert("Logout Success");
-    signOut();
-    navigate("/");
+  const navLinkStyle = ({ isActive }) => {
+    // isActive ? {color:'orange'} : {color:'white'}
+    return {
+      color: isActive ? "orange" : "white",
+      transition: "all 0.3s ease-in-out",
+    };
   };
 
   return (
@@ -22,31 +20,26 @@ function MobileNavbar() {
       <div className="mobileNavbarItems">
         <ul>
           <li>
-            <Link
-              to="/home"
-              className={({ isActive }) =>
-                isActive ? "lactive-class" : "not-active-class"
-              }
-            >
+            <NavLink to="/home" style={navLinkStyle}>
               <WhatshotIcon />
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/movies">
+            <NavLink to="/movies" style={navLinkStyle}>
               <MovieIcon />
-            </Link>
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link to="/tvshows">
+            <NavLink to="/tvshows" style={navLinkStyle}>
               <TvIcon />{" "}
-            </Link>
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link to="/search">
+            <NavLink to="/search" style={navLinkStyle}>
               <SearchIcon />{" "}
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

@@ -65,6 +65,7 @@
 @media screen and (max-width: 480px) {
   .home {
     padding: 20px 12px 70px 12px;
+    top: 0;
   }
   .home > h1 {
     font-size: 20px;

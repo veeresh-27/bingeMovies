@@ -55,6 +55,7 @@ a {
 @media screen and (max-width: 480px) {
   .navbar {
     padding: 20px 12px;
+    position: relative;
   }
   .navbarItems ul {
     font-size: 14px;

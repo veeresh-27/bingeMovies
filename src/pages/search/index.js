@@ -43,17 +43,21 @@ const Search = () => {
   const handlePageChange = (id, type) => {
     navigate(`/movieinfo/${type}/${id}`);
   };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    fetchSearch();
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchSearch();
     // eslint-disable-next-line
-  }, [page, type]);
+  }, [page, type, searchText]);
 
   return (
     <div className="home">
       <ThemeProvider theme={darkTheme}>
-        <div className="searchContainer">
+        <form className="searchContainer">
           <div className="searchBox">
             <input
               type="text"
@@ -62,15 +66,15 @@ const Search = () => {
             />
           </div>
           <Button
-            onClick={fetchSearch}
+            onClick={handleSearch}
             className="searchButton"
             variant="contained"
             style={{ marginLeft: 10 }}
+            type="submit"
           >
             <SearchIcon fontSize="large" />
           </Button>
-        </div>
-
+        </form>
         <Tabs
           value={type}
           indicatorColor="primary"
@@ -85,7 +89,6 @@ const Search = () => {
           <Tab label="Search TV Shows" style={{ width: "50%" }} />
         </Tabs>
       </ThemeProvider>
-
       <div className="cards">
         {content &&
           content.map((data, index) => (
@@ -97,11 +100,10 @@ const Search = () => {
               rating={data.vote_average}
               date={data.release_date || data.first_air_date}
               mediaType={type ? "tv" : "movie"}
-              onClick={() => handlePageChange(data.id, type?"tv":"movie")}
+              onClick={() => handlePageChange(data.id, type ? "tv" : "movie")}
             />
           ))}
       </div>
-
       {numOfPages > 1 && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
       )}

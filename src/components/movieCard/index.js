@@ -1,18 +1,21 @@
 import { Badge } from "@material-ui/core";
 import React from "react";
 import { img_300, unavailable } from "../../config";
+
 import "./styles.css";
 
 function MovieCard({ id, poster, title, rating, date, mediaType, onClick }) {
   const result = Math.round(rating * 10) / 10;
   //mediaType = 'Movies' || 'TV' || 'Video'
-  //result = 
+  //result =
+
   return (
     <div className="movieCard" onClick={onClick}>
       <Badge
         badgeContent={result}
         color={result > 6 ? "primary" : "secondary"}
       />
+
       <div className="movieCardImage">
         <img
           src={poster ? `${img_300}/${poster}` : unavailable}

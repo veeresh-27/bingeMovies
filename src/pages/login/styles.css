@@ -134,3 +134,38 @@ form button {
   font-weight: 600;
   cursor: pointer;
 }
+
+@media screen and (max-width: 572px) {
+  .loginContainer{
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .loginContainer{
+    width: 80%;
+  }
+  .loginHeader h1 {
+    font-size: 24px;
+  }
+  .formGroup label {
+    font-size: 12px;
+  }
+  .formGroup input {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+form button {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+}
+.loginFooter button {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+}
+  
+}

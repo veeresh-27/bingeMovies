@@ -19,8 +19,6 @@ function Login() {
     <div className="pageContianer">
       <div className="loginContainer">
         <div className="loginHeader">
-          <Avatar className="avatar" sx={{ width: 1 / 4, height: 4 / 5 }} />
-          <h1>Login</h1>
         </div>
         <div className="loginForm">
           <form>
@@ -50,7 +48,6 @@ function Login() {
             <button className="googlebtn" onClick={googleSignIn}>
               Google SignIn
             </button>
-            <button className="facebookBtn">SignUp with Facebook</button>
           </div>
         </div>
       </div>

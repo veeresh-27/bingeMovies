@@ -1,5 +1,4 @@
 import "./styles.css";
-import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 

@@ -6,11 +6,9 @@
   background-color: #404145e7;
   color: #f6f6f6;
   padding: 20px 100px;
-  bottom: 70px;
+
   position: relative;
 }
-
-
 
 .cards {
   display: flex;
@@ -59,16 +57,16 @@
   .home {
     padding: 20px 28px;
   }
-  .home > h1{
+  .home > h1 {
     font-size: 24px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .home {
-    padding: 20px 12px;
+    padding: 20px 12px 70px 12px;
   }
-  .home > h1{
+  .home > h1 {
     font-size: 20px;
   }
   .cards {
@@ -79,14 +77,10 @@
     margin-top: 20px;
     gap: 12px;
   }
-  
 }
 
 @media screen and (max-width: 396px) {
-  .home {
-    padding: 20px 12px;
-  }
-  .home > h1{
+  .home > h1 {
     font-size: 20px;
   }
   .cards {
@@ -97,5 +91,4 @@
     margin-top: 20px;
     gap: 12px;
   }
-  
 }

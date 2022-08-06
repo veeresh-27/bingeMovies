@@ -1,8 +1,12 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./style.css";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 import { Avatar } from "@mui/material";
+import TvIcon from "@material-ui/icons/Tv";
+import MovieIcon from "@material-ui/icons/Movie";
+import SearchIcon from "@material-ui/icons/Search";
+import WhatshotIcon from "@material-ui/icons/Whatshot";
 
 function MobileNavbar() {
   let navigate = useNavigate();
@@ -12,23 +16,36 @@ function MobileNavbar() {
     signOut();
     navigate("/");
   };
+
   return (
     <div className="mobileNavbar">
       <div className="mobileNavbarItems">
         <ul>
           <li>
-            <Link to="/home">Trending</Link>
+            <NavLink
+              to="/home"
+              className={({ isActive }) => 
+                      (isActive ? "lactive-class" : "not-active-class")}
+            >
+              <WhatshotIcon />
+            </NavLink>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
+            <NavLink to="/movies">
+              <MovieIcon />
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link to="/tvshows">Series</Link>
+            <NavLink to="/tvshows">
+              <TvIcon />{" "}
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link to="/search">Search</Link>
+            <NavLink to="/search">
+              <SearchIcon />{" "}
+            </NavLink>
           </li>
         </ul>
       </div>

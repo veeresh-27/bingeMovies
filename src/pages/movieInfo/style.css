@@ -116,7 +116,7 @@
   border-left: 4px solid orange;
   padding-left: 12px;
 }
-.storyLineContent{
+.storyLineContent {
   color: #c6c6c6;
 }
 
@@ -131,12 +131,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .home {
-    padding: 20px 28px;
-  }
-  .home > h1 {
-    font-size: 24px;
-  }
   .ratingTab {
     display: none;
   }
@@ -153,25 +147,16 @@
 }
 
 @media screen and (max-width: 480px) {
-  .home {
-    padding: 20px 12px;
-  }
-  .home > h1 {
-    font-size: 20px;
-  }
-  .cards {
-    gap: 12px;
-  }
-  .movieName{
+  .movieName {
     font-size: 2rem;
   }
-  .movieTagline{
+  .movieTagline {
     font-size: 0.9rem;
   }
-  .storyLineHead{
+  .storyLineHead {
     font-size: 1.2rem;
   }
-  .storyLineContent{
+  .storyLineContent {
     font-size: 0.9rem;
   }
 }

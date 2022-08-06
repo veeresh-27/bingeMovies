@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieCard from "../../components/movieCard";
@@ -22,7 +21,7 @@ function Home() {
   };
   useEffect(() => {
     fetchTrending();
-     // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [page]);
 
   return (

@@ -10,7 +10,7 @@ function Navbar() {
   let navigate = useNavigate();
   const { signOut, isSignedIn, isInitialized, googleUser } = useGoogleAuth();
   const googleSignOut = () => {
-    window.confirm("Do you want to sign out?") && signOut();
+    window.confirm("Do you want to sign out?") && signOut() && navigate("/");
   };
   console.log("Current User", googleUser);
   useEffect(() => {

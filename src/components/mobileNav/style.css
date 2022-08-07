@@ -32,7 +32,9 @@
     text-decoration: none;
     color: #f6f6f6;
   }
-
+  .mobileNavbarItems ul {
+    padding: 0;
+  }
   .mobileNavbarItems ul {
     display: flex;
     width: 100%;

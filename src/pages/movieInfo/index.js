@@ -39,8 +39,8 @@ function MovieInfo() {
 
   const aired =
     entity === "tv"
-      ? slice(content.first_air_date, 0, 4) //2022-01-01
-      : slice(content.release_date, 0, 4);
+      ? slice(content?.first_air_date, 0, 4) //2022-01-01
+      : slice(content?.release_date, 0, 4);
 
   const postFix =
     content.vote_count > 1000
@@ -53,14 +53,14 @@ function MovieInfo() {
         <div className="movieInfo">
           <div className="levelOne">
             <div className="titleTab">
-              <h1 className="movieName">{content.title || content.name}</h1>
-              <h5 className="movieTagline">{content.tagline}</h5>
+              <h1 className="movieName">{content?.title || content?.name}</h1>
+              <h5 className="movieTagline">{content?.tagline}</h5>
               <div className="releaseInfo">
                 <p className="releaseDate">{aired}</p>
-                {content.runtime && <p className="dot"></p>}
-                {content.runtime && (
+                {content?.runtime && <p className="dot"></p>}
+                {content?.runtime && (
                   <p className="releaseDate">
-                    {Math.floor(content.runtime / 60)}h {content.runtime % 60}m
+                    {Math.floor(content?.runtime / 60)}h {content?.runtime % 60}m
                   </p>
                 )}
                 <p className="dot"></p>
@@ -70,7 +70,7 @@ function MovieInfo() {
               </div>
             </div>
             <div className="ratingTab">
-              <div className="ratingContainer">
+             {content.vote_average>0&& <div className="ratingContainer">
                 <div className="ratingHead">TMDb&nbsp;RATING</div>
                 <div className="ratingCont">
                   <div className="ratingIcon">
@@ -95,8 +95,8 @@ function MovieInfo() {
                     <div className="ratingCount">{postFix}</div>
                   </div>
                 </div>
-              </div>
-              <div className="ratingContainer">
+              </div>}
+              {content.popularity > 0 && <div className="ratingContainer">
                 <div className="ratingHead">POPULARITY</div>
                 <div className="ratingCont">
                   <div className="ratingIcon">
@@ -117,7 +117,7 @@ function MovieInfo() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>}
             </div>
           </div>
           <div className="backdrop">
@@ -133,7 +133,7 @@ function MovieInfo() {
           <StaticGenre genre={genre} />
           <div className="mobileRatingTab">
               <div className="ratingContainer">
-                <div className="ratingCont">
+               {content.vote_average >0 && <div className="ratingCont">
                   <div className="ratingIcon">
                     <StarIcon
                       style={{
@@ -152,10 +152,10 @@ function MovieInfo() {
                     </div>
                     <div className="ratingCount">{postFix}</div>
                   </div>
-                </div>
+                </div>}
               </div>
               <div className="ratingContainer">
-                <div className="ratingCont">
+                {content.popularity > 0 &&<div className="ratingCont">
                   <div className="ratingIcon">
                     <PeopleIcon
                       style={{
@@ -173,14 +173,14 @@ function MovieInfo() {
                       {Math.round(content.popularity * 10) / 10}
                     </div>
                   </div>
-                </div>
+                </div>}
               </div>
             </div>
           <div className="storyLine" style={{ marginTop: 20 }}>
             <div className="storyLineHead">
               <h3>Storyline</h3>
             </div>{" "}
-            <p className="storyLineContent">{content.overview}</p>
+            <p className="storyLineContent">{content.overview ?content.overview : 'No Info Available'}</p>
           </div>
           <div className="cast" style={{ marginTop: 24 }}>
             <div className="storyLineHead">
@@ -188,7 +188,6 @@ function MovieInfo() {
                 <h3>Videos</h3>
                 <div classsName="videoCount">{video.length}</div>
               </div>
-
               <Carousel
                 mediaType={entity}
                 id={id}

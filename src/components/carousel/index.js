@@ -19,6 +19,16 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
   });
 
   const [content, setContent] = useState([]);
+  const fetchCast = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/${mediaType}/${id}/credits?api_key=${process.env.REACT_APP_MOVIESDB_API_KEY}&language=en-US`
+    );
+    setContent(data.cast);
+  };
+  useEffect(() => {
+    fetchCast();
+    // eslint-disable-next-line
+  }, [id]);
   const resposive = {
     0: { items: 3 },
     512: { items: 4 },
@@ -46,37 +56,29 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
     </div>
   ));
 
-  const items = content?.map((content) => (
+  const items = content?.map((incontent) => (
     <div className="carouselItem">
       <img
         src={
-          content.profile_path
-            ? `${img_300}/${content.profile_path}`
+          incontent.profile_path
+            ? `${img_300}/${incontent.profile_path}`
             : noPicture
         }
-        alt={content?.name}
+        alt={incontent?.name}
         onDragStart={handleDragStart}
-        className="carouselItem__img"
+        className={
+          content.length < 4 ? "carouselItemVideo__img" : "carouselItem__img"
+        }
       />
-      <b className="carouselItem__txt">{content?.name}</b>
+      <b className="carouselItem__txt">{incontent?.name}</b>
     </div>
   ));
 
-  const fetchCast = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${mediaType}/${id}/credits?api_key=${process.env.REACT_APP_MOVIESDB_API_KEY}&language=en-US`
-    );
-    setContent(data.cast);
-  };
-  useEffect(() => {
-    fetchCast();
-    // eslint-disable-next-line
-  }, [id]);
   return (
     <ThemeProvider theme={darkTheme}>
-      {type === "cast" && (
+      {type === "cast" && content.length > 0 ? (
         <AliceCarousel
-          autoPlay
+          autoPlay={content.length < 4 ? false : true}
           responsive={resposive}
           infinite
           disableDotsControls
@@ -84,11 +86,24 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
           mouseTracking
           items={items}
         />
+      ) : (
+        type === "cast" &&
+        content.length < 1 && (
+          <div
+            className="noInfo"
+            style={{
+              color: "#c6c6c6",
+              fontSize: "20px",
+            }}
+          >
+            No Info
+          </div>
+        )
       )}
-      {type === "video" && (
+      {type === "video" && video.length > 0 ? (
         <AliceCarousel
-        infinite
-          autoPlay
+          infinite
+          autoPlay={video.length < 4 ? false : true}
           responsive={resposive}
           disableDotsControls
           mouseTracking
@@ -104,6 +119,19 @@ const Carousel = ({ mediaType, id, type, image, video }) => {
             );
           }}
         />
+      ) : (
+        type === "video" &&
+        video.length < 1 && (
+          <div
+            className="noInfo"
+            style={{
+              color: "#c6c6c6",
+              fontSize: "20px",
+            }}
+          >
+            No Info Available
+          </div>
+        )
       )}
     </ThemeProvider>
   );

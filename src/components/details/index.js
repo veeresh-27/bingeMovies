@@ -1,8 +1,6 @@
 import React from "react";
 import "./style.css";
 
-
-
 function Details({ content, type }) {
   const series = [
     {
@@ -60,8 +58,6 @@ function Details({ content, type }) {
     },
   ];
 
- 
-  
   const renderDetails = type === "movie" ? movie : series;
   console.log("details", renderDetails);
 
@@ -73,23 +69,23 @@ function Details({ content, type }) {
           <div className="detailsText">
             <p className="detailsLabel">{item.key}</p>
             <div className="valueContainer">
-            {Array.isArray(item?.value) ? (
-              item?.value?.map((inner, index) => (
-                <p
-                  className={
-                    0 === index
-                      ? "detailsValue"
-                      : "detailsValueArr"
-                  }
-                >
-                  {inner?.name ? inner.name : inner? inner : 'No Info'}
+              {Array.isArray(item?.value) ? (
+                item?.value?.map((inner, index) => (
+                  <p
+                    className={0 === index ? "detailsValue" : "detailsValueArr"}
+                  >
+                    {inner?.name ? inner.name : inner ? inner : "No Info"}
+                  </p>
+                ))
+              ) : (
+                <p className="detailsValue">
+                  {item?.value
+                    ? item.value === "en"
+                      ? "English"
+                      : item.value
+                    : "No Info"}
                 </p>
-              ))
-            ) : (
-              <p className="detailsValue">
-                {item?.value ? item.value === 'en'?'English':item.value   :"No Info"}
-              </p>
-            )}
+              )}
             </div>
           </div>
         </div>

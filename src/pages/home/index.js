@@ -23,13 +23,13 @@ function Home() {
   const { isInitialized } = useGoogleAuth();
   useEffect(() => {
     fetchTrending();
-    
+
     // eslint-disable-next-line
   }, [page, isInitialized]);
 
   return (
     <div className="home">
-      <h1>Trending</h1>
+      <h1>Trendings</h1>
       <div className="cards">
         {content &&
           content.map((data, index) => (

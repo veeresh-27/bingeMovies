@@ -2,7 +2,6 @@ import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 import ClipLoader from "react-spinners/ClipLoader";
-import { useEffect } from "react";
 
 function Login() {
   let navigate = useNavigate();

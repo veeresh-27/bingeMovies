@@ -4,6 +4,7 @@ import axios from "axios";
 import MovieCard from "../../components/movieCard";
 import CustomPagination from "../../components/customPagination";
 import { useNavigate } from "react-router-dom";
+import { useGoogleAuth } from "../../context/GoogleAuth";
 
 function Home() {
   const [content, setContent] = useState([]);
@@ -19,10 +20,12 @@ function Home() {
     );
     setContent(data.results);
   };
+  const { isInitialized } = useGoogleAuth();
   useEffect(() => {
     fetchTrending();
+    
     // eslint-disable-next-line
-  }, [page]);
+  }, [page, isInitialized]);
 
   return (
     <div className="home">

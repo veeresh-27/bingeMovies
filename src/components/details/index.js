@@ -1,7 +1,48 @@
 import React from "react";
 import "./style.css";
 
+const language = (lang) => {
+  switch (lang) {
+    case "en":
+      return "English";
+    case "es":
+      return "Spanish";
+    case "fr":
+      return "French";
+    case "it":
+      return "Italian";
+    case "ja":
+      return "Japanese";
+    case "pt":
+      return "Portuguese";
+    case "ru":
+      return "Russian";
+    case "zh":
+      return "Chinese";
+    case "kn":
+      return "Kannada";
+    case "hi":
+      return "Hindi";
+    case "ar":
+      return "Arabic";
+    case "ko":
+      return "Korean";
+    case "ta":
+      return "Tamil";
+    case "te":
+      return "Telugu";
+    case "ml":
+      return "Malayalam";
+    case "mr":
+      return "Marathi";
+    default:
+      return "No Info";
+  }
+};
+
 function Details({ content, type }) {
+  console.log("Movie Info", content);
+
   const series = [
     {
       id: 0,
@@ -61,13 +102,15 @@ function Details({ content, type }) {
   const renderDetails = type === "movie" ? movie : series;
   console.log("details", renderDetails);
 
+  console.log("Language", language("kn"));
+
   return (
     <div style={{ marginTop: 12, display: "flex", flexDirection: "column" }}>
       {renderDetails.map((item, index) => (
         <div className="detailsContainer">
           <hr />
           <div className="detailsText">
-            <p className="detailsLabel">{item.key}</p>
+            <p className="detailsLabel">{item?.key}</p>
             <div className="valueContainer">
               {Array.isArray(item?.value) ? (
                 item?.value?.map((inner, index) => (
@@ -80,8 +123,8 @@ function Details({ content, type }) {
               ) : (
                 <p className="detailsValue">
                   {item?.value
-                    ? item.value === "en"
-                      ? "English"
+                    ? item.key === "Language"
+                      ? language(item.value)
                       : item.value
                     : "No Info"}
                 </p>

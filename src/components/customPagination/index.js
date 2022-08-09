@@ -14,7 +14,7 @@ const CustomPagination = ({ setPage, numOfPages = 20 }) => {
       type: "dark",
     },
   });
-
+  
   return (
     <div
       style={{

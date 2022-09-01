@@ -1,10 +1,9 @@
 .movieCard {
   display: flex;
   flex-direction: column;
-  width: 240px;
+  width: 15%;
   background-color: #303136;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   border-radius: 4px;
   cursor: pointer;
   padding: 4px;
@@ -27,14 +26,15 @@
 .movieCardContent {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   margin-bottom: 4px;
 }
 
 .movieCardContent .title {
-  text-align: center;
-  align-self: center;
   font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .movieCardSubContent {
@@ -46,15 +46,14 @@
 
 @media screen and (max-width: 860px) {
   .movieCard {
-    width: 200px;
-    
+    width: 31%;
   }
   .movieCardContent .title {
     text-align: center;
     align-self: center;
     font-size: 15px;
   }
-  
+
   .movieCardSubContent {
     display: flex;
     justify-content: space-between;
@@ -65,14 +64,14 @@
 
 @media screen and (max-width: 480px) {
   .movieCard {
-    width: 180px;
+    width: 45%;
   }
   .movieCardContent .title {
     text-align: center;
     align-self: center;
     font-size: 13px;
   }
-  
+
   .movieCardSubContent {
     display: flex;
     justify-content: space-between;
@@ -81,17 +80,16 @@
   }
 }
 
-
 @media screen and (max-width: 396px) {
   .movieCard {
-    width: 240px;
+    width: 45%;
   }
   .movieCardContent .title {
     text-align: center;
     align-self: center;
     font-size: 13px;
   }
-  
+
   .movieCardSubContent {
     display: flex;
     justify-content: space-between;

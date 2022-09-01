@@ -1,10 +1,6 @@
 import "./App.css";
 import Home from "./pages/home";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Navbar from "./components/navbar";
 import Movies from "./pages/movies";
@@ -12,6 +8,7 @@ import TvShows from "./pages/tvShows";
 import Search from "./pages/search";
 import MovieInfo from "./pages/movieInfo";
 import MobileNavbar from "./components/mobileNav";
+import Trending from "./pages/trending";
 
 function App() {
   // let navigate = useNavigate();
@@ -33,6 +30,16 @@ function App() {
               <>
                 <Navbar />
                 <Home />
+                <MobileNavbar />
+              </>
+            }
+          />
+          <Route
+            path="/trending"
+            element={
+              <>
+                <Navbar />
+                <Trending />
                 <MobileNavbar />
               </>
             }

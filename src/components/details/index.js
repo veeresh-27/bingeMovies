@@ -1,4 +1,6 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import MovieCarousel from "../movieCarousel";
 import "./style.css";
 
 const language = (lang) => {
@@ -41,7 +43,14 @@ const language = (lang) => {
 };
 
 function Details({ content, type }) {
-  console.log("Movie Info", content);
+  //console.log("Movie Info", content);
+  const [recomnded, setRecomended] = useState([]);
+  const fetchRecomends = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${content.id}/recommendations?api_key=${process.env.REACT_APP_MOVIESDB_API_KEY}&language=en-US&page=1`
+    );
+    setRecomended(data?.results);
+  };
 
   const series = [
     {
@@ -100,10 +109,13 @@ function Details({ content, type }) {
   ];
 
   const renderDetails = type === "movie" ? movie : series;
-  console.log("details", renderDetails);
+  //console.log("details", renderDetails);
+  useEffect(() => {
+    fetchRecomends();
 
-  console.log("Language", language("kn"));
-
+    // eslint-disable-next-line
+  }, [content.id]);
+  console.log("Recomendation", recomnded);
   return (
     <div style={{ marginTop: 12, display: "flex", flexDirection: "column" }}>
       {renderDetails.map((item, index) => (
@@ -114,9 +126,7 @@ function Details({ content, type }) {
             <div className="valueContainer">
               {Array.isArray(item?.value) ? (
                 item?.value?.map((inner, index) => (
-                  <p
-                    className={0 === index ? "detailsValue" : "detailsValueArr"}
-                  >
+                  <p className={0 === index ? "detailsValue" : "detailsValueArr"}>
                     {inner?.name ? inner.name : inner ? inner : "No Info"}
                   </p>
                 ))
@@ -134,6 +144,10 @@ function Details({ content, type }) {
         </div>
       ))}
       <hr className="detailsHr" />
+      <div className="recomnded">
+        <div className="recHead">Recomended</div>
+        <MovieCarousel content={recomnded} />
+      </div>
     </div>
   );
 }

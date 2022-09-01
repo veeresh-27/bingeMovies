@@ -33,8 +33,7 @@ function Navbar() {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-        }}
-      >
+        }}>
         <ClipLoader color="orange" loading={!isInitialized} size={150} />
       </div>
     );
@@ -49,7 +48,7 @@ function Navbar() {
         <ul>
           <li className="topItems">
             <NavLink to="/home" style={navLinkStyle}>
-              Trending
+              Home
             </NavLink>
           </li>
           <li className="topItems">
@@ -70,7 +69,7 @@ function Navbar() {
             </NavLink>
           </li>
 
-          <li >
+          <li>
             <ProfileMenue googleSignOut={googleSignOut} user={googleUser.profileObj} />
           </li>
         </ul>

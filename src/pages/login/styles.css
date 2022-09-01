@@ -1,11 +1,12 @@
 .pageContianer {
   width: 100%;
   height: 100vh;
-  background-color: #f6f6f6;
+  background-color: #404145e7;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #f6f6f6;
 }
 
 .loginContainer {
@@ -13,8 +14,7 @@
   max-width: 450px;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   border-radius: 4px;
   padding: 16px 12px;
 }
@@ -70,7 +70,7 @@
   padding: 2px 0;
 }
 
-.formGroup input {
+form input {
   width: 90%;
   display: flex;
   margin: 4px 0;
@@ -78,8 +78,8 @@
   border-radius: 10px;
   outline: none;
   border: none;
-  color: #111;
-  background-color: rgb(235, 255, 255);
+  color: rgb(237, 237, 237);
+  background-color: rgb(77, 79, 79);
   padding: 12px;
   flex: 0 1 1;
 }
@@ -92,10 +92,15 @@ form button {
   outline: none;
   border: none;
   padding: 12px;
-  background-color: orange;
+  background-color: rgb(215, 162, 64);
   color: #f6f6f6;
   font-weight: 600;
   cursor: pointer;
+}
+button:hover,
+.loginFooter button:hover {
+  background: orange;
+  transition: all 0.3ms ease-in-out;
 }
 
 .loginFooter {
@@ -129,20 +134,21 @@ form button {
   outline: none;
   border: none;
   padding: 12px;
-  background-color: orange;
+  background-color: rgb(215, 162, 64);
+
   color: #f6f6f6;
   font-weight: 600;
   cursor: pointer;
 }
 
 @media screen and (max-width: 572px) {
-  .loginContainer{
+  .loginContainer {
     width: 60%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .loginContainer{
+  .loginContainer {
     width: 80%;
   }
   .loginHeader h1 {
@@ -156,16 +162,15 @@ form button {
     font-size: 16px;
     padding: 10px;
   }
-  
-form button {
-  width: 100%;
-  font-size: 16px;
-  padding: 10px;
-}
-.loginFooter button {
-  width: 100%;
-  font-size: 16px;
-  padding: 10px;
-}
-  
+
+  form button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+  .loginFooter button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
 }

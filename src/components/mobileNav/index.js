@@ -5,7 +5,7 @@ import TvIcon from "@material-ui/icons/Tv";
 import MovieIcon from "@material-ui/icons/Movie";
 import SearchIcon from "@material-ui/icons/Search";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
-
+import HomeIcon from "@mui/icons-material/Home";
 function MobileNavbar() {
   const navLinkStyle = ({ isActive }) => {
     // isActive ? {color:'orange'} : {color:'white'}
@@ -21,7 +21,7 @@ function MobileNavbar() {
         <ul>
           <li>
             <NavLink to="/home" style={navLinkStyle}>
-              <WhatshotIcon />
+              <HomeIcon />
             </NavLink>
           </li>
           <li>

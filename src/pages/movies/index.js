@@ -53,14 +53,14 @@ function Movies() {
               poster={data.poster_path}
               rating={data.vote_average}
               date={data.release_date || data.first_air_date}
-              mediaType='movie'
+              mediaType="movie"
               onClick={() => handlePageChange(data.id, "movie")}
             />
           ))}
       </div>
-      {numOfPages > 1 && (
-        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
-      )}
+      {numOfPages > 1 && <CustomPagination setPage={setPage} numOfPages={numOfPages} />}
+
+      <h1> Similar movies</h1>
     </div>
   );
 }

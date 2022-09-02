@@ -27,7 +27,9 @@ const MovieCarousel = ({ content }) => {
   const items = content?.map((incontent) => (
     <div
       className="carouselItem"
-      onClick={() => navigate(`/movieinfo/${incontent?.media_type}/${incontent?.id}`)}>
+      onClick={() =>
+        window.location.reload() && navigate(`/movieinfo/${incontent?.media_type}/${incontent?.id}`)
+      }>
       <img
         src={incontent.poster_path ? `${img_300}/${incontent.poster_path}` : noPicture}
         alt={incontent?.name}

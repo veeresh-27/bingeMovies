@@ -2,6 +2,8 @@ import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useGoogleAuth } from "../../context/GoogleAuth";
 import ClipLoader from "react-spinners/ClipLoader";
+import {Helmet} from "react-helmet-async";
+import React from "react";
 
 function Login() {
   let navigate = useNavigate();
@@ -36,8 +38,13 @@ function Login() {
 
   return (
     <div className="pageContianer">
+      <Helmet>
+        <title>Login</title>
+        <meta name="description" content="Login to your BingeMovies account" />
+        <link rel='canonical' href='/login'/>
+      </Helmet>
       <div className="loginContainer">
-        <div className="loginHeader"></div>
+        {/*<div className="loginHeader"></div>*/}
         <div className="loginForm">
           <form>
             <div className="formGroup">

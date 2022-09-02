@@ -1,0 +1,6 @@
+https://bingemovies.netlify.app/
+https://bingemovies.netlify.app/home
+https://bingemovies.netlify.app/movies
+https://bingemovies.netlify.app/tvshows
+https://bingemovies.netlify.app/search
+https://bingemovies.netlify.app/trending

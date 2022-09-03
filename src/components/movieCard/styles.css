@@ -49,8 +49,6 @@
     width: 31%;
   }
   .movieCardContent .title {
-    text-align: center;
-    align-self: center;
     font-size: 15px;
   }
 
@@ -67,8 +65,6 @@
     width: 45%;
   }
   .movieCardContent .title {
-    text-align: center;
-    align-self: center;
     font-size: 13px;
   }
 
@@ -85,15 +81,12 @@
     width: 45%;
   }
   .movieCardContent .title {
-    text-align: center;
-    align-self: center;
     font-size: 13px;
   }
 
   .movieCardSubContent {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 11px;
   }
 }

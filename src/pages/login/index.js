@@ -15,26 +15,26 @@ function Login() {
     } else {
       return navigate("/");
     }
-    console.log("Google User", googleuser);
+    // console.log("Google User", googleuser);
   };
-  if (isSignedIn) {
-    return navigate("/home", { replace: true });
-  }
+  // if (isSignedIn) {
+  //   return navigate("/home", { replace: true });
+  // }
 
-  if (!isInitialized) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <ClipLoader color="orange" loading={!isInitialized} size={150} />
-      </div>
-    );
-  }
+  // if (!isInitialized) {
+  //   return (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         height: "100vh",
+  //       }}
+  //     >
+  //       <ClipLoader color="orange" loading={!isInitialized} size={150} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="pageContianer">

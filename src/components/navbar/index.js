@@ -13,12 +13,12 @@ function Navbar() {
     window.confirm("Do you want to sign out?") && signOut() && navigate("/");
   };
   console.log("Current User", googleUser);
-  useEffect(() => {
-    if (isSignedIn === false && isInitialized === true) {
-      navigate("/");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSignedIn, isInitialized]);
+  // useEffect(() => {
+  //   if (isSignedIn === false && isInitialized === true) {
+  //     navigate("/");
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isSignedIn, isInitialized]);
   const navLinkStyle = ({ isActive }) => {
     return {
       color: isActive ? "orange" : "white",

@@ -7,7 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const MovieCarousel = ({ content, type }) => {
+const bannerImages = [
+  {
+    img: "https://res.cloudinary.com/practicaldev/image/fetch/s--THrf5Yjw--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n6brz4p7iq7j1mulo1nv.jpg",
+  },
+  {
+    img: "https://www.intowindows.com/wp-content/uploads/2020/07/amazon-prime-video-download-location_thumb.png",
+  },
+  {
+    img: "https://oneroomwithaview.com/wp-content/uploads/2014/07/marvel-logo-wallpaper-1200x520.jpg",
+  },
+  {
+    img: "https://mythbank.com/wp-content/uploads/2019/10/homepagebanner-dc.jpg",
+  },
+];
+
+const Banner = () => {
   const darkTheme = createTheme({
     palette: {
       type: "dark",
@@ -16,48 +31,32 @@ const MovieCarousel = ({ content, type }) => {
       },
     },
   });
-  let navigate = useNavigate();
   const resposive = {
-    0: { items: 4 },
-    512: { items: 6 },
-    1024: { items: 8 },
+    0: { items: 1 },
+    512: { items: 1 },
+    1024: { items: 1 },
   };
 
-  const items = content?.map((incontent) => (
-    <div
-      className="carouselItem"
-      onClick={() =>
-        navigate(
-          `/movieinfo/${incontent?.media_type ? incontent?.media_type : type}/${incontent?.id}`
-        )
-      }>
-      <img
-        src={incontent.poster_path ? `${img_300}/${incontent.poster_path}` : noPicture}
-        alt={incontent?.name}
-        onDragStart={handleDragStart}
-        className="carouselItem__img"
-      />
-      <p title={incontent?.original_title || incontent?.name} className="carouselItem__txt">
-        {incontent?.original_title || incontent?.name}
-      </p>
+  const items = bannerImages?.map(({ img }) => (
+    <div className="carouselItem">
+      <img src={img} alt="banner" onDragStart={handleDragStart} className="carouselItem__img" />
     </div>
   ));
 
   return (
     <ThemeProvider theme={darkTheme}>
-      {content.length > 0 ? (
+      {bannerImages.length > 0 ? (
         <AliceCarousel
           autoPlay
-          autoPlayInterval={1000}
+          autoPlayInterval={2500}
           responsive={resposive}
           infinite
-          disableDotsControls
           disableButtonsControls
           mouseTracking
           items={items}
         />
       ) : (
-        content.length < 1 && (
+        bannerImages.length < 1 && (
           <div
             className="noInfo"
             style={{
@@ -72,4 +71,4 @@ const MovieCarousel = ({ content, type }) => {
   );
 };
 
-export default MovieCarousel;
+export default Banner;

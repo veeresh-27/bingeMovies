@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./styles.css";
 import { useGoogleAuth } from "../../context/GoogleAuth";
-import { Avatar } from "@mui/material";
-import ClipLoader from "react-spinners/ClipLoader";
+import { Avatar } from "@mui/material";import ClipLoader from "react-spinners/ClipLoader";
 import ProfileMenue from "../profileMenu";
 
 function Navbar() {

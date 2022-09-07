@@ -1,9 +1,7 @@
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { img_300, noPicture } from "../../config";
 import "./style.css";
 import { createTheme, ThemeProvider } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -38,8 +36,8 @@ const Banner = () => {
   };
 
   const items = bannerImages?.map(({ img }) => (
-    <div className="carouselItem">
-      <img src={img} alt="banner" onDragStart={handleDragStart} className="carouselItem__img" />
+    <div className="bannerItem">
+      <img src={img} alt="banner" onDragStart={handleDragStart} className="bannerItem__img" />
     </div>
   ));
 

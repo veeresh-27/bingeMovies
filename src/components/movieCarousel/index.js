@@ -19,7 +19,7 @@ const MovieCarousel = ({ content, type }) => {
   let navigate = useNavigate();
   const resposive = {
     0: { items: 4 },
-    512: { items: 6 },
+    700: { items: 6 },
     1024: { items: 8 },
   };
 
@@ -31,12 +31,15 @@ const MovieCarousel = ({ content, type }) => {
           `/movieinfo/${incontent?.media_type ? incontent?.media_type : type}/${incontent?.id}`
         )
       }>
-      <img
-        src={incontent.poster_path ? `${img_300}/${incontent.poster_path}` : noPicture}
-        alt={incontent?.name}
-        onDragStart={handleDragStart}
-        className="carouselItem__img"
-      />
+      <div className="carousel__imageContainer">
+        <img
+          src={incontent.poster_path ? `${img_300}/${incontent.poster_path}` : noPicture}
+          alt={incontent?.name}
+          onDragStart={handleDragStart}
+          className="carouselItem__img"
+        />
+      </div>
+
       <p title={incontent?.original_title || incontent?.name} className="carouselItem__txt">
         {incontent?.original_title || incontent?.name}
       </p>
@@ -47,8 +50,6 @@ const MovieCarousel = ({ content, type }) => {
     <ThemeProvider theme={darkTheme}>
       {content.length > 0 ? (
         <AliceCarousel
-          autoPlay
-          autoPlayInterval={1000}
           responsive={resposive}
           infinite
           disableDotsControls

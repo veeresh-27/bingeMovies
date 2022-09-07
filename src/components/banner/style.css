@@ -1,27 +1,27 @@
-.carouselItem {
+.bannerItem {
   height: 240px;
 }
 
-.carouselItem img {
+.bannerItem img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 @media screen and (max-width: 860px) {
-  .carouselItem {
+  .bannerItem {
     height: 200px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .carouselItem {
+  .bannerItem {
     height: 160px;
   }
 }
 
 @media screen and (max-width: 396px) {
-  .carouselItem {
+  .bannerItem {
     height: 150px;
   }
 }

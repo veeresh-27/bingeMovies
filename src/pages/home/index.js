@@ -67,7 +67,7 @@ function Home() {
   }, [isInitialized]);
 
   return (
-    <div className="home">
+    <div className="home" style={{ gap: "20px" }}>
       <Helmet>
         <title>Binge Movies</title>
         <meta name="description" content="Catch up your favourite Movies and TV shows." />

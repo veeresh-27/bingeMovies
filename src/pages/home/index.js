@@ -6,6 +6,9 @@ import { useGoogleAuth } from "../../context/GoogleAuth";
 import MovieCarousel from "../../components/movieCarousel";
 import { Helmet } from "react-helmet-async";
 import Banner from "../../components/banner";
+import { useNavigate } from "react-router-dom";
+import Trending from "../trending";
+import SubPages from "../../components/subPages";
 
 function Home() {
   const [content, setContent] = useState([]);
@@ -15,6 +18,40 @@ function Home() {
   const [latestTv, setLatestTv] = useState([]);
   const [popularTv, setPopularTv] = useState([]);
 
+  const subContent = [
+    {
+      name: "Trending",
+      link: "trending",
+      content: content,
+    },
+    {
+      name: "Top Rated Movies",
+      link: "topRatedMovies",
+      content: latest,
+    },
+    {
+      name: "Popular Movies",
+      link: "popularMovies",
+      content: popularMovies,
+    },
+    {
+      name: "Upcoming Movies",
+      link: "upcomingMovies",
+      content: upcomingMovies,
+    },
+    {
+      name: "Top TV",
+      link: "topTv",
+      content: latestTv,
+    },
+    {
+      name: "Popular TV Shows",
+      link: "popularTv",
+      content: popularTv,
+    },
+  ];
+
+  const navigate = useNavigate();
   const fetchTrending = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/trending/all/week?api_key=${
@@ -37,9 +74,7 @@ function Home() {
   };
   const fetchUpcomingMovies = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/week?api_key=${
-        process.env.REACT_APP_MOVIESDB_API_KEY
-      }&page=${1}`
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=4bc26b51ad50cd9c0be76557d5c494b6&language=en-US&page=1`
     );
     setUpcomingMovies(data.results);
   };
@@ -65,6 +100,10 @@ function Home() {
     fetchPopularTv();
     // eslint-disable-next-line
   }, [isInitialized]);
+  const handlePageChange = (e) => {
+    navigate(`/trending`);
+    e.stopPropogation();
+  };
 
   return (
     <div className="home" style={{ gap: "20px" }}>
@@ -76,30 +115,10 @@ function Home() {
       <div className="banner">
         <Banner />
       </div>
-      <div>
-        <h3>Trending</h3>
-        <MovieCarousel content={content} />
-      </div>
-      <div>
-        <h3>Top rated Movies</h3>
-        <MovieCarousel content={latest} type="movie" />
-      </div>
-      <div>
-        <h3>Popular Movies</h3>
-        <MovieCarousel content={popularMovies} type="movie" />
-      </div>
-      <div>
-        <h3>Upcoming Movies</h3>
-        <MovieCarousel content={upcomingMovies} type="movie" />
-      </div>
-      <div>
-        <h3>Top TV Shows </h3>
-        <MovieCarousel content={latestTv} type="tv" />
-      </div>
-      <div>
-        <h3>Pupular TV Shows </h3>
-        <MovieCarousel content={popularTv} type="tv" />
-      </div>
+
+      {subContent.map(({ name, link, content }, index) => (
+        <SubPages key={index} title={name} link={link} content={content} />
+      ))}
     </div>
   );
 }
